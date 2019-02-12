@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/faustAbc/ColorComparison/precache-manifest.0992b498db5ce528da2b380f6f3442ff.js"
+  "/ColorComparison/precache-manifest.482aa32a8b6d20bc289de58ecc8735f4.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/faustAbc/ColorComparison/index.html", {
+workbox.routing.registerNavigationRoute("/ColorComparison/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
