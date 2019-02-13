@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import SMYK from './components/SMYK';
 import RGB from './components/RGB';
 import HLS from './components/HLS';
-import { Grid, Fab } from '@material-ui/core';
+import { Grid, Fab, Paper } from '@material-ui/core';
 import { types, CMYKtoRGB, RGBtoCMYK, RGBtoHLS, HLStoRGB } from './components/utls';
 import { BlockPicker } from 'react-color';
 import { Colorize } from '@material-ui/icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
 
 class App extends Component {
   constructor() {
@@ -106,31 +107,45 @@ class App extends Component {
   render() {
     const { R, G, B, isPick } = this.state;
 
-    (!R || !G || !B) && console.log(this.state);
-
     return (
       <Grid container style={{ height: '100vh' }} justify="center" alignItems="center">
         <Grid item>
           <Grid container justify="center">
-            <Grid item>
-              <Grid container direction="column" justify="flex-start" alignItems="center">
-                <Fab onClick={this.appearPicker()} style={{ marginTop: 20, background: `rgb(${R},${G},${B})` }}>
-                  <Colorize />
-                </Fab>
-                {isPick &&
-                  <ClickAwayListener onClickAway={this.appearPicker(false)}>
+            <Grow in={true} timeout={400}>
+              <div style={{ zIndex: 2000 }}>
+                <Grid item>
+                  <Grid container direction="column" justify="flex-start" alignItems="center">
+                    <Fab onClick={this.appearPicker()} style={{ marginTop: 20, background: `rgb(${R},${G},${B})` }}>
+                      <Colorize />
+                    </Fab>
+                    {isPick &&
+                      <ClickAwayListener onClickAway={this.appearPicker(false)}>
 
-                    <div style={{ position: 'absolute', marginTop: 100 }}>
-                      <BlockPicker
-                        color={{ r: R, g: G, b: B }}
-                        onChangeComplete={this.handleChangeComplete}
-                      /> </div>
-                  </ClickAwayListener>}
-              </Grid>
-            </Grid>
-            <SMYK {...this.toSMYK()} />
-            <RGB {...this.toRGB()} />
-            <HLS {...this.toHLS()} />
+                        <div style={{ position: 'absolute', marginTop: 100 }}>
+                          <BlockPicker
+                            color={{ r: R, g: G, b: B }}
+                            onChangeComplete={this.handleChangeComplete}
+                          /> </div>
+                      </ClickAwayListener>}
+                  </Grid>
+                </Grid>
+              </div>
+            </Grow>
+            <Grow in={true} timeout={1000}>
+              <div>
+                <SMYK {...this.toSMYK()} />
+              </div>
+            </Grow>
+            <Grow in={true} timeout={2000}>
+              <div>
+                <RGB {...this.toRGB()} />
+              </div>
+            </Grow>
+            <Grow in={true} timeout={3000}>
+              <div>
+                <HLS {...this.toHLS()} />
+              </div>
+            </Grow>
           </Grid>
         </Grid>
       </Grid>

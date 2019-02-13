@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { TextField } from '@material-ui/core';
 
 const SliderColor = ({ value, text, handleChange, min = 0, max = 100 }) => {
-  const isError = () => value < min || value > max;
+  const isError = () => value < min || value > Math.floor(max);
 
   return (
     <Grid>
@@ -29,7 +29,7 @@ const SliderColor = ({ value, text, handleChange, min = 0, max = 100 }) => {
           type="number"
           error={isError()}
           helperText={isError() ? "Invalid value" : ' '}
-          
+
         />
       </Grid>
     </Grid>
