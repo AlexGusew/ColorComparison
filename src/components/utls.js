@@ -31,7 +31,7 @@ const RGBtoHLS = (R, G, B) => {
     },
   ];
 
-  const H = HMatrix.find(e => e.condition()).value;
+  const H = (HMatrix.find(e => e.condition()).value + 360) % 360 || 0;
 
   const L = (Cmax + Cmin) / 2;
 
@@ -68,10 +68,10 @@ const HLStoRGB = (H, L, S) => {
   const C = (1 - Math.abs(2 * L - 1)) * S;
   const X = C * (1 - Math.abs((H / 60) % 2 - 1));
   const m = L - C / 2;
-
+  
   const HLSMatrix = [
     {
-      condition: () => H >= 0 && H < 60,
+      condition: () => (H >= 0 && H < 60) || !H,
       value: [C, X, 0],
     }, {
       condition: () => H >= 60 && H < 120,

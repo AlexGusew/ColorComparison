@@ -6,6 +6,7 @@ import { Grid, Fab } from '@material-ui/core';
 import { types, CMYKtoRGB, RGBtoCMYK, RGBtoHLS, HLStoRGB } from './components/utls';
 import { BlockPicker } from 'react-color';
 import { Colorize } from '@material-ui/icons';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 class App extends Component {
   constructor() {
@@ -63,9 +64,9 @@ class App extends Component {
         const { R: _R, G: _G, B: _B } = data;
         const addNewValue = { R: _R, G: _G, B: _B, [sliderType]: value || e.target.value };
 
-        R = addNewValue.R;
-        G = addNewValue.G;
-        B = addNewValue.B;
+        R = addNewValue.R || 0;
+        G = addNewValue.G || 0;
+        B = addNewValue.B || 0;
 
         break;
       }
@@ -98,13 +99,14 @@ class App extends Component {
     this.setState({ R, G, B });
   }
 
-  appearPicker = () => {
-    this.setState({ isPick: !this.state.isPick });
+  appearPicker = (isPick = !this.state.isPick) => () => {
+    this.setState({ isPick });
   }
 
   render() {
     const { R, G, B, isPick } = this.state;
-console.log(this.state);
+
+    (!R || !G || !B) && console.log(this.state);
 
     return (
       <Grid container style={{ height: '100vh' }} justify="center" alignItems="center">
@@ -112,14 +114,18 @@ console.log(this.state);
           <Grid container justify="center">
             <Grid item>
               <Grid container direction="column" justify="flex-start" alignItems="center">
-                <Fab onClick={this.appearPicker} style={{ marginTop: 20 }}>
+                <Fab onClick={this.appearPicker()} style={{ marginTop: 20, background: `rgb(${R},${G},${B})` }}>
                   <Colorize />
                 </Fab>
-                {isPick && <div style={{ position: 'absolute', marginTop: 100 }}>
-                  <BlockPicker
-                    color={{ r: R, g: G, b: B }}
-                    onChangeComplete={this.handleChangeComplete}
-                  /> </div>}
+                {isPick &&
+                  <ClickAwayListener onClickAway={this.appearPicker(false)}>
+
+                    <div style={{ position: 'absolute', marginTop: 100 }}>
+                      <BlockPicker
+                        color={{ r: R, g: G, b: B }}
+                        onChangeComplete={this.handleChangeComplete}
+                      /> </div>
+                  </ClickAwayListener>}
               </Grid>
             </Grid>
             <SMYK {...this.toSMYK()} />
