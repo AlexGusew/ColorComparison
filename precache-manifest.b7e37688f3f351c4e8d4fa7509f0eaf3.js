@@ -12,7 +12,7 @@ self.__precacheManifest = [
     "url": "/ColorComparison/static/js/2.22155b76.chunk.js"
   },
   {
-    "revision": "e1d2364ec0626a3a9508659030066269",
+    "revision": "7809cc73e2bc0ce6aecfeed681cae608",
     "url": "/ColorComparison/index.html"
   }
 ];
