@@ -74,9 +74,9 @@ class App extends Component {
         const addNewValue = { C: _C, M: _M, Y: _Y, K: _K, [sliderType]: value || e.target.value };
         const { R: _R, G: _G, B: _B } = CMYKtoRGB(addNewValue.C, addNewValue.M, addNewValue.Y, addNewValue.K);
 
-        R = _R;
-        G = _G;
-        B = _B;
+        R = _R || 0;
+        G = _G || 0;
+        B = _B || 0;
 
         break;
       }
@@ -85,9 +85,9 @@ class App extends Component {
         const addNewValue = { H: _H, L: _L, S: _S, [sliderType]: value || e.target.value };
         const { R: _R, G: _G, B: _B } = HLStoRGB(addNewValue.H, addNewValue.L, addNewValue.S);
 
-        R = _R;
-        G = _G;
-        B = _B;
+        R = _R || 0;
+        G = _G || 0;
+        B = _B || 0;
 
         break;
       }
@@ -104,6 +104,7 @@ class App extends Component {
 
   render() {
     const { R, G, B, isPick } = this.state;
+console.log(this.state);
 
     return (
       <Grid container style={{ height: '100vh' }} justify="center" alignItems="center">
