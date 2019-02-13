@@ -1,11 +1,11 @@
 {
-  "main.js": "/ColorComparison/static/js/main.dc2d457c.chunk.js",
-  "main.js.map": "/ColorComparison/static/js/main.dc2d457c.chunk.js.map",
+  "main.js": "/ColorComparison/static/js/main.fee7d755.chunk.js",
+  "main.js.map": "/ColorComparison/static/js/main.fee7d755.chunk.js.map",
   "runtime~main.js": "/ColorComparison/static/js/runtime~main.824b44bc.js",
   "runtime~main.js.map": "/ColorComparison/static/js/runtime~main.824b44bc.js.map",
-  "static/js/2.22055ff8.chunk.js": "/ColorComparison/static/js/2.22055ff8.chunk.js",
-  "static/js/2.22055ff8.chunk.js.map": "/ColorComparison/static/js/2.22055ff8.chunk.js.map",
+  "static/js/2.acd1245f.chunk.js": "/ColorComparison/static/js/2.acd1245f.chunk.js",
+  "static/js/2.acd1245f.chunk.js.map": "/ColorComparison/static/js/2.acd1245f.chunk.js.map",
   "index.html": "/ColorComparison/index.html",
-  "precache-manifest.b81f621da47d369be805702b452681fb.js": "/ColorComparison/precache-manifest.b81f621da47d369be805702b452681fb.js",
+  "precache-manifest.3d3364d485b53d5536e9b04ad72abe5e.js": "/ColorComparison/precache-manifest.3d3364d485b53d5536e9b04ad72abe5e.js",
   "service-worker.js": "/ColorComparison/service-worker.js"
 }
